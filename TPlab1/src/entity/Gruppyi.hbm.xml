@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11.03.2022 15:30:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Gruppyi" table="gruppyi" catalog="gr" optimistic-lock="version">
+        <id name="shifr" type="java.lang.Integer">
+            <column name="Shifr" />
+            <generator class="identity" />
+        </id>
+        <property name="nazvanie" type="string">
+            <column name="Nazvanie" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="dataFormir" type="date">
+            <column name="DataFormir" length="10" not-null="true" />
+        </property>
+        <property name="kodPlana" type="int">
+            <column name="KodPlana" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="Status" length="50" />
+        </property>
+        <property name="statusDate" type="date">
+            <column name="StatusDate" length="10" />
+        </property>
+        <set name="studentyis" table="studentyi" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ShifrGruppyi" not-null="true" />
+            </key>
+            <one-to-many class="entity.Studentyi" />
+        </set>
+    </class>
+</hibernate-mapping>

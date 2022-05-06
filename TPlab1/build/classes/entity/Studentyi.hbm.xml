@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11.03.2022 15:30:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Studentyi" table="studentyi" catalog="gr" optimistic-lock="version">
+        <id name="nomerZachetki" type="long">
+            <column name="NomerZachetki" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="gruppyi" class="entity.Gruppyi" fetch="select">
+            <column name="ShifrGruppyi" not-null="true" />
+        </many-to-one>
+        <property name="familiya" type="string">
+            <column name="Familiya" length="30" not-null="true" />
+        </property>
+        <property name="imya" type="string">
+            <column name="Imya" length="30" not-null="true" />
+        </property>
+        <property name="otchestvo" type="string">
+            <column name="Otchestvo" length="30" not-null="true" />
+        </property>
+        <property name="gorod" type="string">
+            <column name="Gorod" length="30" not-null="true" />
+        </property>
+        <property name="adres" type="string">
+            <column name="Adres" length="80" not-null="true" />
+        </property>
+        <property name="tel" type="string">
+            <column name="Tel" length="30" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="Status" length="50" />
+        </property>
+        <property name="statusDate" type="date">
+            <column name="StatusDate" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
