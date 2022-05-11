@@ -35,6 +35,7 @@ public class Gruppyi  implements java.io.Serializable {
      private String status;
      private Date statusDate;
      private Set studentyis = new HashSet(0);
+     private Set predmetyis = new HashSet(0);
 
     public Gruppyi() {
     }
@@ -45,13 +46,14 @@ public class Gruppyi  implements java.io.Serializable {
         this.dataFormir = dataFormir;
         this.kodPlana = kodPlana;
     }
-    public Gruppyi(String nazvanie, Date dataFormir, int kodPlana, String status, Date statusDate, Set studentyis) {
+    public Gruppyi(String nazvanie, Date dataFormir, int kodPlana, String status, Date statusDate, Set studentyis, Set predmetyis) {
        this.nazvanie = nazvanie;
        this.dataFormir = dataFormir;
        this.kodPlana = kodPlana;
        this.status = status;
        this.statusDate = statusDate;
        this.studentyis = studentyis;
+       this.predmetyis = predmetyis;
     }
    
      @Id @GeneratedValue(strategy=IDENTITY)
@@ -116,7 +118,7 @@ public class Gruppyi  implements java.io.Serializable {
         this.statusDate = statusDate;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="gruppyi")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="gruppyi", targetEntity=Studentyi.class)
     public Set getStudentyis() {
         return this.studentyis;
     }
@@ -125,8 +127,15 @@ public class Gruppyi  implements java.io.Serializable {
         this.studentyis = studentyis;
     }
 
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="gruppyi", targetEntity=Predmetyi.class)
+    public Set getPredmetyis() {
+        return predmetyis;
+    }
 
-
+    public void setPredmetyis(Set predmetyis) {
+        this.predmetyis = predmetyis;
+    }
+    
 
 }
 

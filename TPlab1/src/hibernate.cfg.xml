@@ -46,7 +46,13 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gr?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC&amp;useLegacyDatetimeCode=false</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
-    <mapping resource="entity/Studentyi.hbm.xml"/>
-    <mapping resource="entity/Gruppyi.hbm.xml"/>
+    
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    
+<!--    <mapping resource="entity/Studentyi.hbm.xml"/>
+    <mapping resource="entity/Gruppyi.hbm.xml"/>-->
+    <mapping class="entity.Studentyi"/>
+    <mapping class="entity.Gruppyi"/>
+    <mapping class="entity.Predmetyi"/>
   </session-factory>
 </hibernate-configuration>
